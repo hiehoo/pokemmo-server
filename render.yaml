@@ -5,9 +5,8 @@ services:
     env: node
     region: oregon
     plan: free
-    rootDir: server
-    buildCommand: npm ci --production
-    startCommand: node server.js
+    buildCommand: cd server && npm ci --production
+    startCommand: cd server && node server.js
     healthCheckPath: /
     envVars:
       - key: NODE_ENV
@@ -35,7 +34,7 @@ services:
   - type: web
     name: pokemmo-client
     env: static
-    buildCommand: npm install && npm run build
+    buildCommand: cd client && npm install && npm run build
     staticPublishPath: ./client/dist
     headers:
       - path: /*
