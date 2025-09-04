@@ -35,11 +35,8 @@ services:
   - type: web
     name: pokemmo-client
     env: static
-    region: oregon
-    plan: free
-    rootDir: client
     buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
+    staticPublishPath: ./client/dist
     headers:
       - path: /*
         name: Cache-Control
