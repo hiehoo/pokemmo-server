@@ -1,4 +1,5 @@
 services:
+  # Backend Server
   - type: web
     name: pokemmo-server
     env: node
@@ -29,3 +30,24 @@ services:
         value: "50000"
       - key: REWARD_BATTLE_WIN
         value: "500000"
+  
+  # Frontend Client
+  - type: web
+    name: pokemmo-client
+    env: static
+    region: oregon
+    plan: free
+    rootDir: client
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=3600
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
