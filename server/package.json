@@ -1,13 +1,17 @@
 {
-  "name": "my-app",
+  "name": "pokemmo-server",
   "version": "1.0.0",
-  "description": "npm init template for bootstraping an empty Colyseus project",
+  "description": "PokeMMO multiplayer game server with Solana integration",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+    "build": "echo 'No build required for Node.js'",
     "loadtest": "colyseus-loadtest loadtest/example.js --room my_room --numClients 2",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -18,16 +22,21 @@
   "devDependencies": {
     "@colyseus/loadtest": "^0.15.0",
     "@colyseus/monitor": "^0.15.0",
-    "@colyseus/uwebsockets-transport": "^0.15.0",
-    "@colyseus/ws-transport": "^0.15.0",
     "@colyseus/redis-driver": "^0.15.0",
-    "@colyseus/redis-presence": "^0.15.0"
+    "@colyseus/redis-presence": "^0.15.0",
+    "@colyseus/uwebsockets-transport": "^0.15.0",
+    "@colyseus/ws-transport": "^0.15.0"
   },
   "dependencies": {
     "@colyseus/monitor": "^0.15.0",
+    "@solana/spl-token": "^0.4.14",
+    "@solana/web3.js": "^1.98.4",
+    "bs58": "^6.0.0",
     "colyseus": "^0.15.0",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
     "express": "^4.16.4",
-    "express-jwt": "^6.0.0"
+    "express-jwt": "^6.0.0",
+    "tweetnacl": "^1.0.3"
   }
 }

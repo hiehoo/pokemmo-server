@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: pokemmo-server
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 18
+      - key: SOLANA_NETWORK
+        value: devnet
+      - key: SOLANA_RPC_URL
+        value: https://api.devnet.solana.com
+      - key: TREASURY_PRIVATE_KEY
+        sync: false
+      - key: GAME_TOKEN_MINT
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: REWARD_PLAYER_JOIN
+        value: "100000"
+      - key: REWARD_MAP_CHANGE
+        value: "50000"
+      - key: REWARD_BATTLE_WIN
+        value: "500000"

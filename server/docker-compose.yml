@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  game-server:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - SOLANA_NETWORK=${SOLANA_NETWORK}
+      - SOLANA_RPC_URL=${SOLANA_RPC_URL}
+      - TREASURY_PRIVATE_KEY=${TREASURY_PRIVATE_KEY}
+      - GAME_TOKEN_MINT=${GAME_TOKEN_MINT}
+      - REWARD_PLAYER_JOIN=${REWARD_PLAYER_JOIN}
+      - REWARD_MAP_CHANGE=${REWARD_MAP_CHANGE}
+      - REWARD_BATTLE_WIN=${REWARD_BATTLE_WIN}
+      - JWT_SECRET=${JWT_SECRET}
+    restart: unless-stopped

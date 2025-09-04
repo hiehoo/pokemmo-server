@@ -4,14 +4,23 @@ const cors = require('cors');
 const colyseus = require('colyseus');
 const monitor = require("@colyseus/monitor").monitor;
 // const socialRoutes = require("@colyseus/social/express").default;
+require('dotenv').config();
 
 const PokeWorld = require('./rooms/PokeWorld').PokeWorld;
+const authRoutes = require('./routes/auth');
+const solanaService = require('./services/solanaService');
 
 const port = process.env.PORT || 3000;
 const app = express()
 
 app.use(cors());
 app.use(express.json());
+
+// Initialize Solana service
+solanaService.initialize();
+
+// Auth routes
+app.use('/api/auth', authRoutes);
 
 const server = http.createServer(app);
 const gameServer = new colyseus.Server({
